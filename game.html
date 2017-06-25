@@ -14,11 +14,11 @@ var ballY = 75;
 var ballSpeedX = 5;
 var ballSpeedY = 7;
 
-const BRICK_W = 100;
-const BRICK_H = 50;
+const BRICK_W = 80;
+const BRICK_H = 20;
 const BRICK_GAP = 2;
-const BRICK_COLS = 8;
-const BRICK_ROWS = 4;
+const BRICK_COLS = 10;
+const BRICK_ROWS = 14;
 var brickGrid = new Array(BRICK_COLS * BRICK_ROWS);
 
 const PADDLE_WIDTH = 100;
@@ -137,8 +137,8 @@ function drawAll() {
 
 	drawBricks();
 
-	var mouseBrickCol = mouseX / BRICK_W;
-	var mouseBrickRow = mouseY / BRICK_H;
+	var mouseBrickCol = Math.floor(mouseX / BRICK_W);
+	var mouseBrickRow = Math.floor(mouseY / BRICK_H);
 	colorText(mouseBrickCol + "," + mouseBrickRow, mouseX,mouseY, 'yellow');
 }
 
