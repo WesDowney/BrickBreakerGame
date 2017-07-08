@@ -93,8 +93,8 @@ function moveAll() {
 	var ballBrickRow = Math.floor(ballY / BRICK_H);
 	var brickIndexUnderBall = rowColToArrayIndex(ballBrickCol, ballBrickRow);
 
-	if (brickIndexUnderBall >= 0 && 
-		brickIndexUnderBall < BRICK_COLS * BRICK_ROWS) {
+	if (ballBrickCol >= 0 && ballBrickCol < BRICK_COLS && 
+		ballBrickRow >= 0 && ballBrickRow < BRICK_ROWS) {
 
 		brickGrid[brickIndexUnderBall] = false;
 	}
