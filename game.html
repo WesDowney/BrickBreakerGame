@@ -89,6 +89,16 @@ function moveAll() {
 		ballReset();
 	}
 
+	var ballBrickCol = Math.floor(ballX / BRICK_W);
+	var ballBrickRow = Math.floor(ballY / BRICK_H);
+	var brickIndexUnderBall = rowColToArrayIndex(ballBrickCol, ballBrickRow);
+
+	if (brickIndexUnderBall >= 0 && 
+		brickIndexUnderBall < BRICK_COLS * BRICK_ROWS) {
+
+		brickGrid[brickIndexUnderBall] = false;
+	}
+
 	var paddleTopEdgeY = canvas.height - PADDLE_DIST_FROM_EDGE;
 	var paddleBottomEdgeY = paddleTopEdgeY + PADDLE_THICKNESS;
 	var paddleLeftEdgeX = paddleX;
@@ -136,19 +146,6 @@ function drawAll() {
 	colorRect(paddleX, canvas.height-PADDLE_DIST_FROM_EDGE, PADDLE_WIDTH, PADDLE_THICKNESS, 'blue');
 
 	drawBricks();
-
-	var mouseBrickCol = Math.floor(mouseX / BRICK_W);
-	var mouseBrickRow = Math.floor(mouseY / BRICK_H);
-	var brickIndexUnderMouse = rowColToArrayIndex(mouseBrickCol, mouseBrickRow);
-
-	colorText(mouseBrickCol + "," + mouseBrickRow+": "+brickIndexUnderMouse, 
-		mouseX,mouseY, 'yellow');
-
-	if (brickIndexUnderMouse >= 0 && 
-		brickIndexUnderMouse < BRICK_COLS * BRICK_ROWS) {
-
-		brickGrid[brickIndexUnderMouse] = false;
-	}
 }
 
 function colorRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColor){
