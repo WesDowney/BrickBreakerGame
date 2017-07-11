@@ -4,10 +4,10 @@ var ballSpeedX = 5;
 var ballSpeedY = 7;
 
 const BRICK_W = 80;
-const BRICK_H = 20;
+const BRICK_H = 40; // temporarily doubled
 const BRICK_GAP = 2;
 const BRICK_COLS = 10;
-const BRICK_ROWS = 14;
+const BRICK_ROWS = 7; // temporarily halfed
 var brickGrid = new Array(BRICK_COLS * BRICK_ROWS);
 
 const PADDLE_WIDTH = 100;
@@ -46,7 +46,7 @@ window.onload = function() {
 	canvas.addEventListener('mousemove', updateMousePos);
 
 	brickReset();
-	ballReset();
+	//ballReset();
 }
 
 function updateAll() {
@@ -90,7 +90,19 @@ function ballBrickHandling(){
 
 		if (brickGrid[brickIndexUnderBall]) {
 			brickGrid[brickIndexUnderBall] = false;
-			ballSpeedY *= -1;
+
+			var prevBallX = ballX - ballSpeedX;
+			var prevBallY = ballY - ballSpeedY;
+			var prevBrickCol = Math.floor(prevBallX / BRICK_W);
+			var prevBrickRow = Math.floor(prevBallY / BRICK_H);
+
+			if (prevBrickCol != ballBrickCol) {
+				ballSpeedX *= -1;
+			}
+			if (prevBrickRow != ballBrickRow) {
+				ballSpeedY *= -1;
+			}
+			
 		} // End of brick found
 	} // end of valid col and row
 }
