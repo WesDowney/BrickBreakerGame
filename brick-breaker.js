@@ -1,7 +1,7 @@
 var ballX = 75;
 var ballY = 75;
-var ballSpeedX = 5;
-var ballSpeedY = 7;
+var ballSpeedX = 3;
+var ballSpeedY = 4;
 
 const BRICK_W = 80;
 const BRICK_H = 20; 
