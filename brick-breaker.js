@@ -76,16 +76,16 @@ function ballReset() {
 function ballMove(){
 	ballX += ballSpeedX;
 
-	if (ballX < 0) { // left 
+	if (ballX < 0 && ballSpeedX < 0.0) { // left 
 		ballSpeedX *= -1;
 	}
-	if (ballX > canvas.width) { // right
+	if (ballX > canvas.width && ballSpeedX > 0.0) { // right
 		ballSpeedX *= -1;
 	}
 
 	ballY += ballSpeedY;
 	
-	if (ballY < 0) { // top
+	if (ballY < 0 && ballSpeedY < 0.0) { // top
 		ballSpeedY *= -1;
 	}
 	if (ballY > canvas.height) { // bottom
@@ -115,7 +115,7 @@ function ballBrickHandling(){
 		if (isBrickAtColRow(ballBrickCol, ballBrickRow)) {
 			brickGrid[brickIndexUnderBall] = false;
 			bricksLeft--;
-			console.log(bricksLeft);
+			// console.log(bricksLeft);
 
 			var prevBallX = ballX - ballSpeedX;
 			var prevBallY = ballY - ballSpeedY;
