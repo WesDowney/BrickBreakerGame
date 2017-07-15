@@ -9,6 +9,7 @@ const BRICK_GAP = 2;
 const BRICK_COLS = 10;
 const BRICK_ROWS = 7; // temporarily halfed
 var brickGrid = new Array(BRICK_COLS * BRICK_ROWS);
+var bricksLeft = 0;
 
 const PADDLE_WIDTH = 100;
 const PADDLE_THICKNESS = 10;
@@ -37,8 +38,10 @@ function updateMousePos(evt) {
 }
 
 function brickReset() {
+	bricksLeft = 0;
 	for (var i = 0; i< BRICK_COLS * BRICK_ROWS;i++){
 		brickGrid[i] = true;
+		bricksLeft++;
 	} // end of for each brick
 } // end of brickReset func
 
@@ -96,6 +99,8 @@ function ballBrickHandling(){
 
 		if (brickGrid[brickIndexUnderBall]) {
 			brickGrid[brickIndexUnderBall] = false;
+			bricksLeft--;
+			console.log(bricksLeft);
 
 			var prevBallX = ballX - ballSpeedX;
 			var prevBallY = ballY - ballSpeedY;
