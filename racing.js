@@ -3,11 +3,11 @@ var ballY = 75;
 var ballSpeedX = 3;
 var ballSpeedY = 4;
 
-const TRACK_W = 80;
-const TRACK_H = 20; 
+const TRACK_W = 40;
+const TRACK_H = 40; 
 const TRACK_GAP = 2;
-const TRACK_COLS = 10;
-const TRACK_ROWS = 14; 
+const TRACK_COLS = 20;
+const TRACK_ROWS = 15; 
 var trackGrid = new Array(TRACK_COLS * TRACK_ROWS);
 var tracksLeft = 0;
 
@@ -32,11 +32,7 @@ function updateMousePos(evt) {
 
 function trackReset() {
 	tracksLeft = 0;
-	var i;
-	for (i = 0 * TRACK_COLS; i < 3 * TRACK_COLS; i++){
-		trackGrid[i] = false;
-	}
-	for (; i < TRACK_COLS * TRACK_ROWS; i++){
+	for (var i = 0; i < TRACK_COLS * TRACK_ROWS; i++){
 		trackGrid[i] = true;
 		tracksLeft++;
 	} // end of for each track
